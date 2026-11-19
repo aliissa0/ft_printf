@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 18:12:20 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/18 16:55:58 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/19 13:20:13 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_flag
 	int		hash;
 	int		plus;
 	int		space;
-	size_t 	width;
-	int	prec;
+	int 	width;
+	int		prec;
 	char	speci;
 }		t_flag;
 
@@ -35,13 +35,17 @@ int		ft_isspec(char c);
 int		ft_isflag(char c);
 void	ft_setprec(t_flag *flag, char const *str, int *i);
 void	ft_parser(char const *str, int *i, t_flag *flag);
-void	ft_print_char(t_flag flag, int c);
-void	ft_print_str(t_flag flag, char *str);
+int		ft_print_char(t_flag flag, int c);
+int		ft_print_str(t_flag flag, char const *str);
 char	*ft_strcat(char *dest, char *src);
 void	ft_print_nb(t_flag s_flag, int nbr);
 char	*ft_ltoa_base(long nb, char *base_to);
 int		ft_countdigit(long nb, int leng);
 int		ft_ischar(int c);
+int		ft_putcharn(char c, int count);
+int		ft_putstrs(char const *s, int len);
+int		ft_putchars(char c);
+void	ft_addreturn(int *count, int re);
 
 
 #endif

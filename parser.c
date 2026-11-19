@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:30:42 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/18 16:41:29 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/19 13:21:23 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ void	ft_callprint(va_list *lst, t_flag flag)
 	else if (flag.speci == 's')
 		ft_print_str(flag, va_arg(*lst, char *));
 	else if (flag.speci == 'd' || flag.speci == 'i')
-		ft_print_nb(flag, va_arg(*lst, int));
+	{
+		/* code */
+	}
 	else if (flag.speci == 'p')
 	{
 		/* code */
@@ -52,19 +54,23 @@ int	ft_handlemod(va_list *lst, char const *str)
 	int		i;
 	
 	i = 0;
-	(void)lst;
 	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1] != '%')
+		if (str[i] != '%')
+		{
+			ft_putchar_fd(str[i], 1);
+			i++;
+		}
+		else if (str[i] == '%' && str[i + 1] != '%')
 		{
 			ft_parser(str, &i, &newflag);
 			ft_callprint(lst, newflag);
 		}
 		else if (str[i] == '%' && str[i + 1] == '%')
+		{
 			ft_putchar_fd('%', 1);
-		if (str[i] != '%')
-			ft_putchar_fd(str[i], 1);
-		i++;
+			i += 2;
+		}
 	}
 	return (1);
 }

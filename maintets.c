@@ -5,7 +5,7 @@
 int main()
 {
 	char c = 'x';
-	char str[] = "hello";
-	ft_printf("%.d", 0);
-	printf("%.d", 0);
+	char *str = NULL;
+	//ft_printf("%s\n", str);
+	printf("%s\n", str);
 }
