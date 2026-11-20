@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:30:42 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/19 13:21:23 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/20 18:41:09 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,47 +24,47 @@ void	ft_init_flags(t_flag *new)
 	new->speci = '\0';
 }
 
-void	ft_callprint(va_list *lst, t_flag flag)
+int	ft_callprint(va_list *lst, t_flag flag)
 {
+	int	count;
+
+	count = 0;
 	if (flag.speci == 'c')
-		ft_print_char(flag, va_arg(*lst, int));
+		count = ft_print_char(flag, va_arg(*lst, int));
 	else if (flag.speci == 's')
-		ft_print_str(flag, va_arg(*lst, char *));
+		count = ft_print_str(flag, va_arg(*lst, char *));
 	else if (flag.speci == 'd' || flag.speci == 'i')
-	{
-		/* code */
-	}
+		count = ft_print_nb(flag, va_arg(*lst, int));
 	else if (flag.speci == 'p')
-	{
-		/* code */
-	}
-	else if (flag.speci == 'x' || flag.speci == 'X')
-	{
-		/* code */
-	}
+		count = ft_print_add(flag, va_arg(*lst, int));
+	else if (flag.speci == 'x')
+		count = ft_print_hexl(flag, va_arg(*lst, unsigned int));
+	else if (flag.speci == 'X')
+		count = ft_print_hexu(flag, va_arg(*lst, unsigned int));	
 	else if (flag.speci == 'u')
-	{
-		/* code */
-	}
+		count = ft_print_uns(flag, va_arg(*lst, unsigned int));
+	return (count);
 }
 
 int	ft_handlemod(va_list *lst, char const *str)
 {
 	t_flag	newflag;
+	int		count;
 	int		i;
 	
 	i = 0;
+	count = 0;
 	while (str[i])
 	{
 		if (str[i] != '%')
 		{
-			ft_putchar_fd(str[i], 1);
+			ft_addreturn(&count, ft_putchars(str[i]));
 			i++;
 		}
 		else if (str[i] == '%' && str[i + 1] != '%')
 		{
 			ft_parser(str, &i, &newflag);
-			ft_callprint(lst, newflag);
+			count = ft_callprint(lst, newflag);
 		}
 		else if (str[i] == '%' && str[i + 1] == '%')
 		{
@@ -72,7 +72,7 @@ int	ft_handlemod(va_list *lst, char const *str)
 			i += 2;
 		}
 	}
-	return (1);
+	return (count);
 }
 
 void	ft_parser(char const *str, int *i, t_flag *flag)
