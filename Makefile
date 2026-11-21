@@ -6,7 +6,19 @@
 #    By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/17 22:58:52 by aliissa           #+#    #+#              #
-#    Updated: 2026/11/18 16:50:43 by aliissa          ###   ########.fr        #
+#    Updated: 2026/11/21 12:53:41 by aliissa          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/11/17 22:58:52 by aliissa           #+#    #+#              #
+#    Updated: 2026/11/21 12:55:00 by aliissa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,29 +30,44 @@ RM			= rm -f
 
 LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
-HEADER		= ft_printf.h
 INCLUDES	= -I. -I$(LIBFT_DIR)
 
-SRC			= ft_printf.c helper.c parser.c printing1.c printing2.c
+SRC			= ft_printf.c helper.c helper2.c printchar.c printnb.c \
+			  printhx.c printadr.c
+BONUS_SRC	= ft_printf_bonus.c helper_bonus.c helper2_bonus.c \
+			  printchar_bonus.c printnb_bonus.c printhx_bonus.c \
+			  printadr_bonus.c
+
 OBJ_DIR		= obj
 OBJ			= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+BONUS_OBJ	= $(addprefix $(OBJ_DIR)/, $(BONUS_SRC:.c=.o))
 
 all: $(NAME)
+
+$(NAME): $(LIBFT) $(OBJ)
+	$(RM) .bonus
+	cp $(LIBFT) $(NAME)
+	$(AR) $(NAME) $(OBJ)
+
+bonus: .bonus
+
+.bonus: $(LIBFT) $(BONUS_OBJ)
+	$(RM) $(NAME)
+	cp $(LIBFT) $(NAME)
+	$(AR) $(NAME) $(BONUS_OBJ)
+	touch .bonus
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: %.c $(HEADER) | $(OBJ_DIR)
+$(OBJ_DIR)/%_bonus.o: %_bonus.c ft_printf_bonus.h | $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJ_DIR)/%.o: %.c ft_printf.h | $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
-
-$(NAME): $(LIBFT) $(OBJ)
-	cp $(LIBFT) $(NAME)
-	$(AR) $(NAME) $(OBJ)
-
-bonus: all
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
@@ -48,7 +75,7 @@ clean:
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME)
+	$(RM) $(NAME) .bonus
 
 re: fclean all
 

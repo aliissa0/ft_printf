@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 18:12:20 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 02:46:12 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 12:52:53 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
 #include "libft/libft.h"
 #include <stdarg.h>
@@ -51,5 +51,9 @@ int		ft_print_add(t_flag flag, unsigned long p);
 int		ft_print_uns(t_flag flag, unsigned int	nbr);
 int		ft_print_hexl(t_flag flag, unsigned int nbr);
 int		ft_print_hexu(t_flag flag, unsigned int nbr);
+int	 	ft_print_prefix(int up);
+int		ft_print_nb1(t_flag flag, char *nb, char sign);
+int		ft_print_nb1_1(t_flag flag, char *nb, char sign);
+int		ft_print_nb2(t_flag flag, char *nb, char sign);
 
 #endif

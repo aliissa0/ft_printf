@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.c                                           :+:      :+:    :+:   */
+/*   helper_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:53:04 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 01:19:31 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 12:47:42 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	ft_isspec(char c)
 {
@@ -103,55 +103,4 @@ int	ft_ischar(int c)
 	if (c == 'c' || c == 's')
 		return (1);
 	return (0);
-}
-
-int ft_putchars(char c)
-{
-	return (write(1, &c, 1));
-}
-
-int ft_putstrs(char const *s, int len)
-{
-	int	i;
-	int	count;
-	int check;
-
-	i = 0;
-	count = 0;
-	check = 0;
-	while (i < len && s[i])
-	{
-		check = write(1, &s[i], 1);
-		if (check == -1)
-			return (-1);
-		count = count + check;
-		i++;
-	}
-	return (count);
-}
-
-int ft_putcharn(char c, int count)
-{
-	int	i;
-
-	i = 0;
-	while (i < count)
-	{
-		if (write(1, &c, 1) == -1)
-			return (-1);
-		i++;
-	}
-	return (i);
-}
-
-void	ft_addreturn(int *count, int re)
-{
-	if (*count == -1)
-		return ;
-	if (re == -1)
-	{
-		*count = -1;
-		return ;
-	}
-	*count = *count + re;
 }

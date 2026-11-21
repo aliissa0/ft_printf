@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/17 22:30:42 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 02:45:55 by aliissa          ###   ########.fr       */
+/*   Created: 2026/11/17 18:10:00 by aliissa           #+#    #+#             */
+/*   Updated: 2026/11/21 12:58:33 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 void	ft_init_flags(t_flag *new)
 { 
@@ -99,4 +99,16 @@ void	ft_parser(char const *str, int *i, t_flag *flag)
 		*i = *i + 1;
 	}
 	ft_setprec(flag, str, i);
+}
+
+int	ft_printf(const char *str, ...)
+{
+	va_list	lst;
+	int		count;
+
+	va_start(lst, str);
+	count = ft_handlemod(&lst, str);
+	
+	va_end(lst);
+	return (count);
 }

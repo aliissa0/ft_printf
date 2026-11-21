@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printing2.c                                        :+:      :+:    :+:   */
+/*   helper2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/18 15:58:48 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 02:15:52 by aliissa          ###   ########.fr       */
+/*   Created: 2026/11/21 12:43:26 by aliissa           #+#    #+#             */
+/*   Updated: 2026/11/21 12:47:46 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	ft_countdigit(unsigned long nb, unsigned long leng)
 {
@@ -48,4 +48,16 @@ char	*ft_ltoa_base(unsigned long nb, char *base_to)
 	ft_putnbr_base(nb, base_to, res, &i);
 	res[i] = '\0';
 	return (res);
+}
+
+void	ft_addreturn(int *count, int re)
+{
+	if (*count == -1)
+		return ;
+	if (re == -1)
+	{
+		*count = -1;
+		return ;
+	}
+	*count = *count + re;
 }
