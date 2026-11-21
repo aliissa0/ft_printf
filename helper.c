@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:53:04 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/19 13:16:10 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 01:19:31 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ int ft_putcharn(char c, int count)
 
 void	ft_addreturn(int *count, int re)
 {
+	if (*count == -1)
+		return ;
 	if (re == -1)
 	{
 		*count = -1;

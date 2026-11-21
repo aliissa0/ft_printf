@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:30:42 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/20 18:41:09 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 02:45:55 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_callprint(va_list *lst, t_flag flag)
 	else if (flag.speci == 'd' || flag.speci == 'i')
 		count = ft_print_nb(flag, va_arg(*lst, int));
 	else if (flag.speci == 'p')
-		count = ft_print_add(flag, va_arg(*lst, int));
+		count = ft_print_add(flag, (unsigned long) va_arg(*lst, void *));
 	else if (flag.speci == 'x')
 		count = ft_print_hexl(flag, va_arg(*lst, unsigned int));
 	else if (flag.speci == 'X')
@@ -64,11 +64,11 @@ int	ft_handlemod(va_list *lst, char const *str)
 		else if (str[i] == '%' && str[i + 1] != '%')
 		{
 			ft_parser(str, &i, &newflag);
-			count = ft_callprint(lst, newflag);
+			ft_addreturn(&count, ft_callprint(lst, newflag));
 		}
 		else if (str[i] == '%' && str[i + 1] == '%')
 		{
-			ft_putchar_fd('%', 1);
+			ft_addreturn(&count, ft_putchars('%'));
 			i += 2;
 		}
 	}
