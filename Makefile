@@ -6,19 +6,7 @@
 #    By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/17 22:58:52 by aliissa           #+#    #+#              #
-#    Updated: 2026/11/21 12:53:41 by aliissa          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/11/17 22:58:52 by aliissa           #+#    #+#              #
-#    Updated: 2026/11/21 12:55:00 by aliissa          ###   ########.fr        #
+#    Updated: 2026/11/21 16:55:47 by aliissa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +20,8 @@ LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 INCLUDES	= -I. -I$(LIBFT_DIR)
 
-SRC			= ft_printf.c helper.c helper2.c printchar.c printnb.c \
-			  printhx.c printadr.c
+SRC			= ft_printf.c ft_printaddr.c ft_printnb.c ft_printchar.c
+
 BONUS_SRC	= ft_printf_bonus.c helper_bonus.c helper2_bonus.c \
 			  printchar_bonus.c printnb_bonus.c printhx_bonus.c \
 			  printadr_bonus.c

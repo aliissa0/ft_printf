@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 12:42:09 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 12:48:04 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 16:27:30 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_print_hx1(t_flag flag, char *nb, int cas)
 	int	len;
 	int	tlen;
 	int	plen;
-	
+
 	count = 0;
 	plen = 0;
 	len = (int) ft_strlen(nb);
@@ -42,7 +42,7 @@ int	ft_print_hx1_1(t_flag flag, char *nb, int cas)
 	int	len;
 	int	tlen;
 	int	plen;
-	
+
 	count = 0;
 	plen = 0;
 	if (flag.hash)
@@ -73,7 +73,7 @@ int	ft_print_hx2(t_flag flag, char *nb, int cas)
 		ft_addreturn(&count, ft_putstrs(nb, len));
 	}
 	else
-	{	
+	{
 		ft_addreturn(&count, ft_putcharn('0', flag.width - len));
 		ft_addreturn(&count, ft_putstrs(nb, len));
 	}
@@ -113,7 +113,7 @@ int	ft_print_hexu(t_flag flag, unsigned int nbr)
 		flag.hash = 0;
 	nb = ft_ltoa_base(nbr, "0123456789ABCDEF");
 	if (!nb)
-		return (-1);	
+		return (-1);
 	if (nbr == 0 && flag.prec == 0)
 		nb[0] = 0;
 	if (flag.minus == 1)

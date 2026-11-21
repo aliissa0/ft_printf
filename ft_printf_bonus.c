@@ -6,14 +6,14 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 18:10:00 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 12:58:33 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 16:20:36 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
 void	ft_init_flags(t_flag *new)
-{ 
+{
 	new->minus = 0;
 	new->zero = 0;
 	new->plus = 0;
@@ -40,7 +40,7 @@ int	ft_callprint(va_list *lst, t_flag flag)
 	else if (flag.speci == 'x')
 		count = ft_print_hexl(flag, va_arg(*lst, unsigned int));
 	else if (flag.speci == 'X')
-		count = ft_print_hexu(flag, va_arg(*lst, unsigned int));	
+		count = ft_print_hexu(flag, va_arg(*lst, unsigned int));
 	else if (flag.speci == 'u')
 		count = ft_print_uns(flag, va_arg(*lst, unsigned int));
 	return (count);
@@ -51,7 +51,7 @@ int	ft_handlemod(va_list *lst, char const *str)
 	t_flag	newflag;
 	int		count;
 	int		i;
-	
+
 	i = 0;
 	count = 0;
 	while (str[i])
@@ -108,7 +108,6 @@ int	ft_printf(const char *str, ...)
 
 	va_start(lst, str);
 	count = ft_handlemod(&lst, str);
-	
 	va_end(lst);
 	return (count);
 }

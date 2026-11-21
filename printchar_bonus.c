@@ -6,22 +6,22 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 10:04:02 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 12:47:54 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 16:26:44 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int ft_putchars(char c)
+int	ft_putchars(char c)
 {
 	return (write(1, &c, 1));
 }
 
-int ft_putstrs(char const *s, int len)
+int	ft_putstrs(char const *s, int len)
 {
 	int	i;
 	int	count;
-	int check;
+	int	check;
 
 	i = 0;
 	count = 0;
@@ -37,7 +37,7 @@ int ft_putstrs(char const *s, int len)
 	return (count);
 }
 
-int ft_putcharn(char c, int count)
+int	ft_putcharn(char c, int count)
 {
 	int	i;
 

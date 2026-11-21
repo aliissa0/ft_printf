@@ -6,34 +6,34 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 12:39:49 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 12:52:09 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 16:29:50 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int ft_print_nb1(t_flag flag, char *nb, char sign)
+int	ft_print_nb1(t_flag flag, char *nb, char sign)
 {
-    int count;
-    int len;
-    int	tlen;
+	int	count;
+	int	len;
+	int	tlen;
 	int	slen;
-    
-    count = 0;
+
+	count = 0;
 	slen = 0;
-    len = (int) ft_strlen(nb);
-    tlen = 0;
-    if (flag.prec != -1 && flag.prec > len)
-        tlen = flag.prec - len;
-    if (sign)
+	len = (int) ft_strlen(nb);
+	tlen = 0;
+	if (flag.prec != -1 && flag.prec > len)
+		tlen = flag.prec - len;
+	if (sign)
 	{
-        ft_addreturn(&count, ft_putchars(sign));
+		ft_addreturn(&count, ft_putchars(sign));
 		slen = 1;
 	}
-    ft_addreturn(&count, ft_putcharn('0', tlen));
-    ft_addreturn(&count, ft_putstrs(nb, len));
-    ft_addreturn(&count, ft_putcharn(' ', flag.width - (tlen + len + slen)));
-    return (count);
+	ft_addreturn(&count, ft_putcharn('0', tlen));
+	ft_addreturn(&count, ft_putstrs(nb, len));
+	ft_addreturn(&count, ft_putcharn(' ', flag.width - (tlen + len + slen)));
+	return (count);
 }
 
 int	ft_print_nb1_1(t_flag flag, char *nb, char sign)
@@ -42,7 +42,7 @@ int	ft_print_nb1_1(t_flag flag, char *nb, char sign)
 	int		len;
 	int		tlen;
 	int		slen;
-	
+
 	count = 0;
 	slen = 0;
 	len = (int) ft_strlen(nb);
@@ -72,7 +72,7 @@ int	ft_print_nb2(t_flag flag, char *nb, char sign)
 		ft_addreturn(&count, ft_putstrs(nb, len));
 	}
 	else
-	{	
+	{
 		ft_addreturn(&count, ft_putchars(sign));
 		ft_addreturn(&count, ft_putcharn('0', flag.width - len - 1));
 		ft_addreturn(&count, ft_putstrs(nb, len));
@@ -110,7 +110,7 @@ int	ft_print_nb(t_flag flag, int nbr)
 	count = 0;
 	nb = ft_ltoa_base(n, "0123456789");
 	if (!nb)
-		return (-1);	
+		return (-1);
 	if (nbr == 0 && flag.prec == 0)
 		nb[0] = '\0';
 	if (flag.minus == 1)

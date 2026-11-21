@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:53:04 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 12:47:42 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 16:31:57 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isspec(char c)
 {
-	char 	specifier[9];
+	char	specifier[9];
 	int		i;
 
 	specifier[0] = 'c';
@@ -36,7 +36,7 @@ int	ft_isspec(char c)
 	return (0);
 }
 
-int ft_isflag(char c)
+int	ft_isflag(char c)
 {
 	char	flags[6];
 	int		i;
@@ -77,25 +77,6 @@ void	ft_setprec(t_flag *flag, char const *str, int *i)
 		flag->speci = str[*i];
 		*i = *i + 1;
 	}
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[j] != '\0')
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (dest);
 }
 
 int	ft_ischar(int c)
