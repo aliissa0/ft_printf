@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 12:43:26 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 16:25:11 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 20:41:11 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,14 @@ void	ft_addreturn(int *count, int re)
 		return ;
 	}
 	*count = *count + re;
+}
+
+size_t	ft_strlen(char const *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

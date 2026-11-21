@@ -150,7 +150,7 @@ Every write goes through helpers that return the number of bytes written or `-1`
 
 **How AI was used**
 
-An AI assistant (Claude) was used as a tutor and reviewer during this project:
+An AI assistant was used as a tutor and reviewer during this project:
 
 - **Explanations:** the meaning of each flag, width and precision, and how they interact; how `va_list` / `va_arg` work; pointers versus the values they point to; signed/unsigned conversions.
 - **Design guidance:** the overall architecture (main loop, parser, printers), the struct layout, and the compute-then-write approach, explained in words. The C code of the functions was written by me.

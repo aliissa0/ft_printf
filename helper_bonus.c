@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:53:04 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 16:31:57 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 20:30:02 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	ft_setprec(t_flag *flag, char const *str, int *i)
 	{
 		*i = *i + 1;
 		flag->prec = 0;
-		if (ft_isdigit(str[*i]))
+		if (str[*i] >= '0' && str[*i] <= '9')
 		{
-			while (ft_isdigit(str[*i]))
+			while (str[*i] >= '0' && str[*i] <= '9')
 			{
 				flag->prec = flag->prec * 10 + (str[*i] - '0');
 				*i = *i + 1;

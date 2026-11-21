@@ -6,15 +6,16 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 18:12:20 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 16:34:17 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 20:30:22 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_BONUS_H
 # define FT_PRINTF_BONUS_H
 
-# include "libft/libft.h"
 # include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_flag
 {
@@ -57,5 +58,6 @@ int		ft_isflag(char c);
 void	ft_setprec(t_flag *flag, char const *str, int *i);
 int		ft_countdigit(unsigned long nb, unsigned long leng);
 char	*ft_ltoa_base(unsigned long nb, char *base_to);
+size_t	ft_strlen(char const *str);
 
 #endif

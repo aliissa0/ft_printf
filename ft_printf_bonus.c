@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 18:10:00 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 16:20:36 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 20:29:44 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ft_parser(char const *str, int *i, t_flag *flag)
 			flag->space = 1;
 		*i = *i + 1;
 	}
-	while (ft_isdigit(str[*i]))
+	while (str[*i] >= '0' && str[*i] <= '9')
 	{
 		flag->width = flag->width * 10 + (str[*i] - '0');
 		*i = *i + 1;

@@ -6,7 +6,7 @@
 #    By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/17 22:58:52 by aliissa           #+#    #+#              #
-#    Updated: 2026/11/21 16:55:47 by aliissa          ###   ########.fr        #
+#    Updated: 2026/11/21 20:26:54 by aliissa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,6 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 AR			= ar rcs
 RM			= rm -f
-
-LIBFT_DIR	= libft
-LIBFT		= $(LIBFT_DIR)/libft.a
-INCLUDES	= -I. -I$(LIBFT_DIR)
 
 SRC			= ft_printf.c ft_printaddr.c ft_printnb.c ft_printchar.c
 
@@ -32,16 +28,14 @@ BONUS_OBJ	= $(addprefix $(OBJ_DIR)/, $(BONUS_SRC:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(OBJ)
 	$(RM) .bonus
-	cp $(LIBFT) $(NAME)
 	$(AR) $(NAME) $(OBJ)
 
 bonus: .bonus
 
-.bonus: $(LIBFT) $(BONUS_OBJ)
+.bonus:	$(BONUS_OBJ)
 	$(RM) $(NAME)
-	cp $(LIBFT) $(NAME)
 	$(AR) $(NAME) $(BONUS_OBJ)
 	touch .bonus
 
@@ -54,15 +48,11 @@ $(OBJ_DIR)/%_bonus.o: %_bonus.c ft_printf_bonus.h | $(OBJ_DIR)
 $(OBJ_DIR)/%.o: %.c ft_printf.h | $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
-	$(MAKE) -C $(LIBFT_DIR) clean
 	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
-	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(RM) $(NAME) .bonus
 
 re: fclean all

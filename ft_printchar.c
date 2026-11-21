@@ -6,11 +6,21 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 15:30:49 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 16:41:00 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 20:30:15 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+size_t	ft_strlen(char const *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 int	ft_putstrs(char const *s)
 {
