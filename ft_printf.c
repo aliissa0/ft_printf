@@ -6,7 +6,7 @@
 /*   By: aliissa <aliissa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 14:50:19 by aliissa           #+#    #+#             */
-/*   Updated: 2026/11/21 16:23:10 by aliissa          ###   ########.fr       */
+/*   Updated: 2026/11/21 23:43:23 by aliissa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_callprint(va_list *lst, char speci)
 		count = ft_print_hexu(va_arg(*lst, unsigned int));
 	else if (speci == 'u')
 		count = ft_print_uns(va_arg(*lst, unsigned int));
+	else if (speci == '%')
+		count = ft_print_char('%');
 	return (count);
 }
 
@@ -60,16 +62,13 @@ int	ft_handlemod(va_list *lst, char const *str)
 			ft_addreturn(&count, ft_putchars(str[i]));
 			i++;
 		}
-		else if (str[i] == '%' && str[i + 1] != '%')
+		else if (str[i + 1])
 		{
 			ft_addreturn(&count, ft_callprint(lst, str[i + 1]));
 			i += 2;
 		}
-		else if (str[i] == '%' && str[i + 1] == '%')
-		{
-			ft_addreturn(&count, ft_putchars('%'));
-			i += 2;
-		}
+		else
+			break ;
 	}
 	return (count);
 }

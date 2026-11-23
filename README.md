@@ -46,7 +46,7 @@ make fclean   # removes object files and the library
 make re       # rebuilds everything from scratch
 ```
 
-The Makefile first builds the bundled `libft` with its own Makefile, then merges `libft.a` and the ft_printf objects into a single `libftprintf.a`, so programs only need to link against this one file.
+Both `make` and `make bonus` produce the same library name, `libftprintf.a`, so programs only need to link against this one file. The bonus version contains every mandatory conversion as well.
 
 **Usage**
 
@@ -66,7 +66,7 @@ int	main(void)
 ```
 
 ```sh
-cc main.c libftprintf.a -I. -Ilibft -o test
+cc main.c libftprintf.a -I. -o test
 ./test
 ```
 
